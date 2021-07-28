@@ -5,7 +5,7 @@ package org.snowjak.city.gamestate;
 
 import org.snowjak.city.CityGame;
 import org.snowjak.city.GameData;
-import org.snowjak.city.screens.LoadingScreen;
+import org.snowjak.city.screens.MainMenuScreen;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.ai.msg.Telegram;
@@ -14,39 +14,37 @@ import com.badlogic.gdx.ai.msg.Telegram;
  * @author snowjak88
  *
  */
-public class LoadingGameState extends GameScreenState {
+public class MainMenuScreenState extends GameScreenState {
 	
-	private LoadingScreen loadingScreen;
+	private MainMenuScreen mainMenuScreen;
 	
-	public LoadingGameState(GameData gameData) {
+	public MainMenuScreenState(GameData gameData) {
 		
 		super(gameData);
 		
-		loadingScreen = new LoadingScreen(gameData);
+		mainMenuScreen = new MainMenuScreen(gameData);
 	}
 	
 	@Override
 	public void enter(CityGame entity) {
 		
-		Gdx.app.log("STATE", "Entering [LoadingGameState]");
-		entity.setScreen(loadingScreen);
+		Gdx.app.log("STATE", "Entering [MainMenuState]");
+		entity.setScreen(mainMenuScreen);
 	}
 	
 	@Override
 	public void update(CityGame entity) {
 		
 		//
-		// check if loading is complete
-		if (loadingScreen.isFinishedLoading())
-			entity.getStateMachine().changeState(new MainMenuScreenState(getGameData()));
+		// nothing to do
 	}
 	
 	@Override
 	public void exit(CityGame entity) {
 		
 		//
-		// do nothing
-		Gdx.app.log("STATE", "Exiting [LoadingGameState]");
+		// nothing to do
+		Gdx.app.log("STATE", "Exiting [MainMenuState]");
 	}
 	
 	@Override

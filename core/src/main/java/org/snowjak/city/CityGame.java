@@ -6,6 +6,7 @@ import org.snowjak.city.gamestate.LoadingGameState;
 import com.badlogic.gdx.Game;
 import com.badlogic.gdx.ai.fsm.DefaultStateMachine;
 import com.badlogic.gdx.ai.fsm.StateMachine;
+import com.badlogic.gdx.utils.I18NBundle;
 import com.kotcrab.vis.ui.VisUI;
 
 /**
@@ -27,6 +28,8 @@ public class CityGame extends Game {
 	public void create() {
 		
 		VisUI.load();
+		
+		gameData.assetManager.load(GameData.BUNDLE_UI, I18NBundle.class);
 		
 		stateMachine = new DefaultStateMachine<>(this);
 		stateMachine.changeState(new LoadingGameState(gameData));
