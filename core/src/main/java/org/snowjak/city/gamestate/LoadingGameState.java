@@ -14,7 +14,7 @@ import com.badlogic.gdx.ai.msg.Telegram;
  * @author snowjak88
  *
  */
-public class LoadingGameState extends GameScreenState {
+public class LoadingGameState extends GameState {
 	
 	private LoadingScreen loadingScreen;
 	

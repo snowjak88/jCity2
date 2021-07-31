@@ -27,11 +27,11 @@ import com.badlogic.gdx.ai.fsm.State;
  * @author snowjak88
  *
  */
-public abstract class GameScreenState implements State<CityGame> {
+public abstract class GameState implements State<CityGame> {
 	
 	private final GameData gameData;
 	
-	public GameScreenState(GameData gameData) {
+	public GameState(GameData gameData) {
 		
 		this.gameData = gameData;
 	}

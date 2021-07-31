@@ -17,22 +17,20 @@ import com.badlogic.gdx.utils.I18NBundle;
 import com.kotcrab.vis.ui.widget.VisTextButton;
 
 /**
- * Implements the game's main menu screen.
- * 
  * @author snowjak88
  *
  */
-public class MainMenuScreen extends ScreenAdapter {
+public class OptionsSetupScreen extends ScreenAdapter {
 	
-	public static final String I18N_BUTTON_PLAY = "mainmenu.buttons.play";
-	public static final String I18N_BUTTON_EXIT = "mainmenu.buttons.exit";
+	public static final String I18N_BUTTON_BACK = "options.buttons.back";
+	public static final String I18N_BUTTON_PLAY = "options.buttons.play";
 	
 	private final GameData gameData;
 	
 	private final Stage stage;
 	private final VerticalGroup root;
 	
-	public MainMenuScreen(GameData gameData, Runnable playButtonAction, Runnable exitButtonAction) {
+	public OptionsSetupScreen(GameData gameData, Runnable backButtonAction) {
 		
 		this.gameData = gameData;
 		
@@ -43,28 +41,19 @@ public class MainMenuScreen extends ScreenAdapter {
 		
 		final VisTextButton playButton = new VisTextButton(uiText.get(I18N_BUTTON_PLAY));
 		playButton.pad(32f);
-		playButton.addListener(new ClickListener() {
-			
-			@Override
-			public void clicked(InputEvent event, float x, float y) {
-				
-				playButtonAction.run();
-			}
-		});
 		root.addActor(playButton);
 		
-		final VisTextButton exitButton = new VisTextButton(uiText.get(I18N_BUTTON_EXIT));
-		exitButton.pad(32f);
-		exitButton.addListener(new ClickListener() {
+		final VisTextButton backButton = new VisTextButton(uiText.get(I18N_BUTTON_BACK));
+		backButton.pad(32f);
+		backButton.addListener(new ClickListener() {
 			
 			@Override
 			public void clicked(InputEvent event, float x, float y) {
 				
-				exitButtonAction.run();
+				backButtonAction.run();
 			}
-			
 		});
-		root.addActor(exitButton);
+		root.addActor(backButton);
 		
 		root.setFillParent(true);
 		root.align(Align.center);

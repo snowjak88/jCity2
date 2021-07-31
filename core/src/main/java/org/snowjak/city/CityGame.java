@@ -1,6 +1,6 @@
 package org.snowjak.city;
 
-import org.snowjak.city.gamestate.GameScreenState;
+import org.snowjak.city.gamestate.GameState;
 import org.snowjak.city.gamestate.LoadingGameState;
 
 import com.badlogic.gdx.Game;
@@ -12,7 +12,7 @@ import com.kotcrab.vis.ui.VisUI;
 /**
  * Base game-screen holder.
  * <p>
- * Uses a {@link StateMachine} to manage its {@link GameScreenState
+ * Uses a {@link StateMachine} to manage its {@link GameState
  * screen-states}.
  * </p>
  * 
@@ -21,7 +21,7 @@ import com.kotcrab.vis.ui.VisUI;
  */
 public class CityGame extends Game {
 	
-	private StateMachine<CityGame, GameScreenState> stateMachine;
+	private StateMachine<CityGame, GameState> stateMachine;
 	private GameData gameData = new GameData();
 	
 	@Override
@@ -49,7 +49,7 @@ public class CityGame extends Game {
 		VisUI.dispose();
 	}
 	
-	public StateMachine<CityGame, GameScreenState> getStateMachine() {
+	public StateMachine<CityGame, GameState> getStateMachine() {
 		
 		return stateMachine;
 	}

@@ -5,20 +5,22 @@ package org.snowjak.city.gamestate;
 
 import org.snowjak.city.CityGame;
 import org.snowjak.city.GameData;
-import org.snowjak.city.screens.MainMenuScreen;
+import org.snowjak.city.screens.OptionsSetupScreen;
 
-import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.ai.msg.Telegram;
 
 /**
  * @author snowjak88
  *
  */
-public class MainMenuScreenState extends GameState {
+public class OptionsSetupState extends GameState {
 	
-	private MainMenuScreen mainMenuScreen;
+	private OptionsSetupScreen optionsSetupScreen;
 	
-	public MainMenuScreenState(GameData gameData) {
+	/**
+	 * @param gameData
+	 */
+	public OptionsSetupState(GameData gameData) {
 		
 		super(gameData);
 	}
@@ -26,12 +28,10 @@ public class MainMenuScreenState extends GameState {
 	@Override
 	public void enter(CityGame entity) {
 		
-		Gdx.app.log("STATE", "Entering [MainMenuState]");
+		optionsSetupScreen = new OptionsSetupScreen(getGameData(),
+				() -> entity.getStateMachine().changeState(new MainMenuScreenState(getGameData())));
 		
-		mainMenuScreen = new MainMenuScreen(getGameData(),
-				() -> entity.getStateMachine().changeState(new OptionsSetupState(getGameData())), () -> Gdx.app.exit());
-		
-		entity.setScreen(mainMenuScreen);
+		entity.setScreen(optionsSetupScreen);
 	}
 	
 	@Override
@@ -46,7 +46,6 @@ public class MainMenuScreenState extends GameState {
 		
 		//
 		// nothing to do
-		Gdx.app.log("STATE", "Exiting [MainMenuState]");
 	}
 	
 	@Override
